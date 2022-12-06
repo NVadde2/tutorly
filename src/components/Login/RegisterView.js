@@ -28,17 +28,15 @@ export default function RegisterView() {
         if(validatePassword()) {
           // Create a new user with email and password using firebase
             createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
-              sendEmailVerification(auth.currentUser)   
-              .then(() => {
-              }).catch((err) => alert(err.message))
+            .then((res) => {
+              console.log(res.user)
             })
             .catch(err => setError(err.message))
         }
         setEmail('')
         setPassword('')
         setConfirmPassword('')
-        navigate("/login")
+        navigate("/userDetails")
       }
     
     return(

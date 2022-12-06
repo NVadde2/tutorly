@@ -1,9 +1,11 @@
 import {useState, useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
+import {signInWithEmailAndPassword} from 'firebase/auth'
 import {auth} from './firebase'
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function LoginView() {
     const [email, setEmail] = useState('')
@@ -31,17 +33,10 @@ function LoginView() {
         alert("Login Failed")
     };
 
-    function signInWithEmail() {
-        signInWithEmailAndPassword(auth, email, password)
-        .then({onFailure})
-        .catch({onSuccess})
-    }
-
     const login = e => {
         e.preventDefault()
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
-            alert("Login Success")
             navigate('/teach')
         })
         .catch(err => setError(err.message))
@@ -51,23 +46,23 @@ function LoginView() {
         <div>
             <h1>Login</h1>
             <p></p>
-            <form onSubmit={login} name='login_form'>
-                <input 
+            <Form onSubmit={login} name='login_form'>
+                <Form.Control 
                 type='email' 
                 value={email}
                 required
                 placeholder="Enter your email"
                 onChange={e => setEmail(e.target.value)}/>
 
-                <input 
+                <Form.Control 
                     type='password'
                     value={password}
                     required
                     placeholder='Enter your password'
                     onChange={e => setPassword(e.target.value)}/>
 
-                <button type='submit'>Login</button>
-            </form>
+                <Button type='submit'>Login</Button>
+            </Form>
 
             <p>OR CONTINUE WITH GOOGLE</p>
             <GoogleLogin

@@ -1,10 +1,17 @@
 import "./style.scss"
 
+
 export default function UserDetailView() {
+
+    function submitUserDetails() {
+        console.log("Before Submit")
+        
+    }
+
 return(
     <div>
         Hello UserDetailView!
-        <form action="/my-handling-form-page" method="post">
+        <form action="/submitUserDetails" method="post">
             <ul>
                 <li>
                 <label for="name">Name:</label>
