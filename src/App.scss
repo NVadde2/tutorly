@@ -1,5 +1,13 @@
+$background-color_2: rgb(186, 79, 79);
+
+body {
+	background-image: $background-color_2;
+  background-color: black;
+}
+
 .App {
   text-align: center;
+  background-color: $background-color_2;
 }
 
 .App-logo {
@@ -21,7 +29,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(9, 7, 7);
 }
 
 .App-link {

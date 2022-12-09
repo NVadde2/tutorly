@@ -23,6 +23,14 @@ const auth = getAuth(app);
 export {auth}
 const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
-
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => signInWithPopup(provider);
+export const signInWithGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const email = result.user.email;
+      localStorage.setItem("email", email);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export{signInWithGoogle}
