@@ -39,7 +39,7 @@ export default function RegisterView() {
       setEmail('')
       setPassword('')
       setConfirmPassword('')
-      navigate("/fp/userDetails")}
+      navigate("/fp/user")}
   const loginPage = () => {
     navigate("/fp/login")}
     

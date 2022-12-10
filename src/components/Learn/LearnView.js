@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Api from "../../api";
 import { ListGroup } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 function LearnView() {
     const [tags, setTags] = useState([]);
@@ -42,9 +43,11 @@ function LearnView() {
     return (
         <>
         {tags.map((tag) =>
-            <ListGroup key={tag.tagId}>
-                <ListGroup.Item>{tag.tagName}</ListGroup.Item>
-            </ListGroup>
+            <Link style={{textDecoration:"None"}} to={`/fp/course/${tag.tagId}`} className="listrow">
+                <ListGroup key={tag.tagId}>
+                    <ListGroup.Item>{tag.tagName}</ListGroup.Item>
+                </ListGroup>
+            </Link>
         )}   
         </>
     )

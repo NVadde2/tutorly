@@ -24,4 +24,20 @@ export default class Api {
     getTags = () => {
         return this.init().get(`${this.api_url}tags`);
     };
+
+    getTopicDetails = (id) => {
+        return this.init().get(`${this.api_url}topics/${id}`);
+    };
+
+    getTopics = () => {
+        return this.init().get(`${this.api_url}topics`);
+    };
+
+    getTopicUser = (id) => {
+        return this.init().get(`${this.api_url}v2/topics/${id}`);
+    };
+
+    getUserSlots = (id) => {
+        return this.init().get(`${this.api_url}v2/userSlots/${id}`);
+    };
 }
